@@ -9,13 +9,52 @@
 
 public class ModifiedNewtonsMethod
 {
+    /**
+    * This method evaluates the desired function. Makes changing functions easier.
+    * Currently set to evaluate x^3 - 2x - 5
+    * @param x     the point at which f needs to be evaluated
+    * @return      returns the computed value f(x)
+    **/
+    public static double evalFx(double x)
+    {
+        return Math.pow(x,3) - (2 * x) - 5;
+    }
+    
+    /**
+    * This method computes the derivative of f(x)
+    * currently set to evaluate f'(x) = 3x^2 - 2
+    * @param x    the value at which f needs to be evaluated
+    * @return     returns f'(x)
+    **/
+    public static double evalFprime(double x)
+    {
+        return (3 * Math.pow(x,2)) - 2;
+    }
+    
+    /**
+    * This method evaluates the second derivate of f(x)
+    * @param x     the value at which f needs to be evaluated
+    **/
+    public static double evalSecondDerivative(double x)
+    {
+        return 6 * x;
+    }
+    
+    /**
+    * This method computes an approximation to the equation f(x) = 0
+    * using newton's method, but modified for faster convergence.
+    * @param p0         this is an initial guess to f(p0) = 0
+    * @param TOL        this is the desired tolerance of error
+    * @param maxItr     this is the max number of iterations to perform, if a solution is not found, throws illegalargumentexception
+    * @return           returns the approximated solution to f(x) = 0
+    **/
     public static double modifiedNewtonsMethod(double p0, double TOL, int maxItr)
     {
         int itr = 1;
         while(itr < maxItr)
         {
-            double numerator = (Math.pow(p0,3) - (2 * p0) - 5) * ((3 * Math.pow(p0,2)) - 2);
-            double denominator = (Math.pow((3 * Math.pow(p0,2)) - 2,2)) - ( (Math.pow(p0,3) - (2 * p0) - 5) * ((6 * p0)));
+            double numerator = evalFx(p0) * evalFprime(p0);
+            double denominator = (evalFprime(p0) * evalFprime(p0)) - ( evalFx(p0) * evalSecondDerivative(p0));
             double p = p0 - (numerator/denominator);
 
             if(Math.abs(p - p0) < TOL)
