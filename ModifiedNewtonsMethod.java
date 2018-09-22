@@ -73,7 +73,7 @@ public class ModifiedNewtonsMethod
     {
         double testP = 1.5;
         double TOL = .000000000001;
-        int testItr = 1;
+        int testItr = 7;
 
         System.out.println("The solution found for the equation f(x) = 0 is: " + modifiedNewtonsMethod(testP,TOL,testItr));
     }
