@@ -4,8 +4,6 @@
 
 // This method is written with f(x) = x^3 - 2x - 5
 
-// Note that the Modified Newton's Method finds a solution within an error of
-// .000000000001 using just one iteration
 
 public class ModifiedNewtonsMethod
 {
